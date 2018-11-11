@@ -8,7 +8,7 @@ newick_format = []
 
 
 def main():
-    sequences = ['A', 'B', 'C', 'D','E','F','G']
+    sequences = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
     table = {}
     for sequence in sequences:
         row = {}
@@ -46,7 +46,7 @@ def main():
     table['E']['A'] = 12
     table['E']['B'] = 14
     table['E']['C'] = 18
-    table['E']['D'] = 18
+    table['E']['D'] = 8
     table['E']['E'] = 0
     table['E']['F'] = 18
     table['E']['G'] = 13
@@ -64,6 +64,8 @@ def main():
     table['G']['E'] = 13
     table['G']['F'] = 14
     table['G']['G'] = 0
+    global help_table
+    help_table = table
 
     find_smallest(table)
 
@@ -79,7 +81,6 @@ def find_smallest(table):
                     minimum = table[row][col]
         print(minimum)
         newick_format.append(result)
-        print(newick_format)
         # remake both new sequence and new table
         table = remake_sequence(table, result)
 
@@ -120,8 +121,13 @@ def remake_table(table, new_sequences, result):
 
 
 def find_distance(table, result, row):
-    distance = (table[row][result[0]] + table[row][result[1]]) / 2
-    return distance
+    result_string = ''.join(result)
+    distance = 0
+    for char in result_string:
+        for row_char in row:
+            distance += help_table[row_char][char]
+    # distance = (table[row][result[0]] + table[row][result[1]]) / 2
+    return distance / (len(result_string) * len(row))
 
 
 if __name__ == '__main__':
