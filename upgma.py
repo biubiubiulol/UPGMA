@@ -19,13 +19,19 @@ def main():
     table['A']['B'] = 13
     table['A']['C'] = 11
     table['A']['D'] = 7
+    table['B']['A'] = 13
     table['B']['B'] = 0
     table['B']['C'] = 2
     table['B']['D'] = 11
+    table['C']['A'] = 11
+    table['C']['B'] = 2
     table['C']['C'] = 0
     table['C']['D'] = 9
+    table['D']['A'] = 7
+    table['D']['B'] = 11
+    table['D']['C'] = 9
     table['D']['D'] = 0
-
+    print(table)
     find_smallest(table)
 
 
@@ -65,7 +71,7 @@ def remake_table(table, new_sequences, result):
     for new_sequence in new_sequences:
         row = {}
         for col in new_sequences:
-            row[col] = -1
+            row[col] = 0
         new_table[new_sequence] = row
 
     for row in new_table:
@@ -74,6 +80,8 @@ def remake_table(table, new_sequences, result):
                 new_table[row][col] = table[row][col]
             elif col == result[0] + result[1] and col != row:
                 new_table[row][col] = find_distance(table, result, row)
+            elif row == result[0] + result[1] and col != row:
+                new_table[row][col] = find_distance(table, result, col)
 
     print(new_table)
 
