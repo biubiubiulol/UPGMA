@@ -56,10 +56,10 @@ def remake_sequence(table, result):
         elif sequence == result[1]:
             continue
         new_sequence.append(sequence)
-    remake_table(table, new_sequence)
+    remake_table(table, new_sequence, result)
 
 
-def remake_table(table, new_sequences):
+def remake_table(table, new_sequences, result):
     new_table = {}
     # Init new table
     for new_sequence in new_sequences:
@@ -72,7 +72,15 @@ def remake_table(table, new_sequences):
         for col in new_table[row]:
             if row in table and col in table[row]:
                 new_table[row][col] = table[row][col]
+            elif col == result[0] + result[1] and col != row:
+                new_table[row][col] = find_distance(table, result, row)
+
     print(new_table)
+
+
+def find_distance(table, result, row):
+    distance = (table[row][result[0]] + table[row][result[1]]) / 2
+    return distance
 
 
 if __name__ == '__main__':
