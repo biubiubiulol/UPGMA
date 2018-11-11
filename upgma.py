@@ -31,24 +31,23 @@ def main():
     table['D']['B'] = 11
     table['D']['C'] = 9
     table['D']['D'] = 0
-    print(table)
     find_smallest(table)
 
 
 def find_smallest(table):
-    minimum = sys.maxsize
-    result = []
-    for row in table:
-        for col in table[row]:
-            if table[row][col] < minimum and table[row][col] != 0 and table[row][col] != -1:
-                result = [row, col]
-                minimum = table[row][col]
-    print(minimum)
-    newick_format.append(result)
-    print(newick_format)
-    # remake both new sequence and new table
-    remake_sequence(table, result)
-    return result
+    while len(table) > 2:
+        minimum = sys.maxsize
+        result = []
+        for row in table:
+            for col in table[row]:
+                if table[row][col] < minimum and table[row][col] != 0 and table[row][col] != -1:
+                    result = [row, col]
+                    minimum = table[row][col]
+        print(minimum)
+        newick_format.append(result)
+        print(newick_format)
+        # remake both new sequence and new table
+        table = remake_sequence(table, result)
 
 
 def remake_sequence(table, result):
@@ -62,7 +61,7 @@ def remake_sequence(table, result):
         elif sequence == result[1]:
             continue
         new_sequence.append(sequence)
-    remake_table(table, new_sequence, result)
+    return remake_table(table, new_sequence, result)
 
 
 def remake_table(table, new_sequences, result):
@@ -82,8 +81,8 @@ def remake_table(table, new_sequences, result):
                 new_table[row][col] = find_distance(table, result, row)
             elif row == result[0] + result[1] and col != row:
                 new_table[row][col] = find_distance(table, result, col)
-
     print(new_table)
+    return new_table
 
 
 def find_distance(table, result, row):
