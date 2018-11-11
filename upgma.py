@@ -8,7 +8,7 @@ newick_format = []
 
 
 def main():
-    sequences = ['A', 'B', 'C', 'D']
+    sequences = ['A', 'B', 'C', 'D','E','F','G']
     table = {}
     for sequence in sequences:
         row = {}
@@ -19,18 +19,52 @@ def main():
     table['A']['B'] = 13
     table['A']['C'] = 11
     table['A']['D'] = 7
+    table['A']['E'] = 12
+    table['A']['F'] = 16
+    table['A']['G'] = 15
     table['B']['A'] = 13
     table['B']['B'] = 0
     table['B']['C'] = 2
     table['B']['D'] = 11
+    table['B']['E'] = 14
+    table['B']['F'] = 13
+    table['B']['G'] = 5
     table['C']['A'] = 11
     table['C']['B'] = 2
     table['C']['C'] = 0
     table['C']['D'] = 9
+    table['C']['E'] = 18
+    table['C']['F'] = 15
+    table['C']['G'] = 3
     table['D']['A'] = 7
     table['D']['B'] = 11
     table['D']['C'] = 9
     table['D']['D'] = 0
+    table['D']['E'] = 8
+    table['D']['F'] = 14
+    table['D']['G'] = 13
+    table['E']['A'] = 12
+    table['E']['B'] = 14
+    table['E']['C'] = 18
+    table['E']['D'] = 18
+    table['E']['E'] = 0
+    table['E']['F'] = 18
+    table['E']['G'] = 13
+    table['F']['A'] = 16
+    table['F']['B'] = 13
+    table['F']['C'] = 15
+    table['F']['D'] = 14
+    table['F']['E'] = 18
+    table['F']['F'] = 0
+    table['F']['G'] = 14
+    table['G']['A'] = 15
+    table['G']['B'] = 5
+    table['G']['C'] = 3
+    table['G']['D'] = 13
+    table['G']['E'] = 13
+    table['G']['F'] = 14
+    table['G']['G'] = 0
+
     find_smallest(table)
 
 
