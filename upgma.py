@@ -4,7 +4,7 @@ This program should take the distance table of k2p with different sequences.
 
 import sys
 
-newick_format = []
+
 
 
 def main():
@@ -67,10 +67,12 @@ def main():
     global help_table
     help_table = table
 
+
     find_smallest(table)
 
 
 def find_smallest(table):
+    newick_format = []
     while len(table) > 2:
         minimum = sys.maxsize
         result = []
@@ -81,6 +83,7 @@ def find_smallest(table):
                     minimum = table[row][col]
         print(minimum)
         newick_format.append(result)
+        print(newick_format)
         # remake both new sequence and new table
         table = remake_sequence(table, result)
 
