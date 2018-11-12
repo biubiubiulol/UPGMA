@@ -26,11 +26,14 @@ def k2p(seq1, seq2):
     for base in range(len(seq1)):
         type1 = bases.get(seq1[base])
         type2 = bases.get(seq2[base])
-        if type1 == type2:
-            number_transitions = number_transitions+1
-        else:
-            number_transversions = number_transversions+1
+        if seq1[base] != seq2[base]:
+            if type1 == type2:
+                number_transitions = number_transitions+1
+            else:
+                number_transversions = number_transversions+1
     s = number_transitions/length
+    print(s)
     v = number_transversions/length
+    print(v)
     d = -(.5)*math.log(1- 2*s - v) - (0.25)*math.log(1- 2*v) 
     print(d)
