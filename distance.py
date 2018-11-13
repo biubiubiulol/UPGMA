@@ -6,7 +6,17 @@ import math
 
 #TODO: Alignment of the 2 sequences
 
-def k2p(seq1, seq2):
+def align(seq1, seq2):
+    #get rid of this once done
+    print("This is placeholder for a function implementing dynamic programming")
+    #once this is made actually return the proper output values
+    return seq1, seq2
+
+
+def k2p(sequence_1, sequence_2):
+    seq_list =  align(sequence_1, sequence_2)
+    seq1 = seq_list[0]
+    seq2 = seq_list[1]
     alpha = 0.9
     beta = 0.1
     if len(seq1) >= len(seq2):
@@ -32,8 +42,6 @@ def k2p(seq1, seq2):
             else:
                 number_transversions = number_transversions+1
     s = number_transitions/length
-    print(s)
     v = number_transversions/length
-    print(v)
     d = -(.5)*math.log(1- 2*s - v) - (0.25)*math.log(1- 2*v) 
-    print(d)
+    return d
