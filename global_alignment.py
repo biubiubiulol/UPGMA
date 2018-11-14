@@ -23,7 +23,7 @@ def align():
     for i in range(1, s1_length+1):
         scores[i][0] = gap_penalty * i
 
-    for j in range(0, s2_length+1):
+    for j in range(1, s2_length+1):
         scores[0][j] = gap_penalty * j
 
     for i in range(1, s1_length+1):
