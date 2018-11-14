@@ -4,6 +4,7 @@ This program should take the distance table of k2p with different sequences.
 
 import sys
 import distance as d
+import readfasta
 
 def main():
     sequences = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
