@@ -1,0 +1,2 @@
+import readfasta
+def main():
