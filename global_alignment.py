@@ -1,5 +1,5 @@
 from sys import argv
-from read_fasta import read_fasta
+from readfasta import readfasta
 import numpy as np
 
 '''
