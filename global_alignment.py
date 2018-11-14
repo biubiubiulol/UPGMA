@@ -86,5 +86,6 @@ def main():
     align()
 
 
-main()
+if __name__ == '__main__':
+    main()
 
