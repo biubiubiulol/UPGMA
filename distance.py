@@ -15,8 +15,8 @@ def align(seq1, seq2):
 
 def k2p(sequence_1, sequence_2):
     seq_list =  align(sequence_1, sequence_2)
-    seq1 = seq_list[0]
-    seq2 = seq_list[1]
+    seq1 = seq_list[1]
+    seq2 = seq_list[2]
     alpha = 0.9
     beta = 0.1
     if len(seq1) >= len(seq2):
