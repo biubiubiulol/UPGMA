@@ -17,3 +17,4 @@ bioinformatics project2 using UPGMA and bootstrapping to find the closet clade.
 3. run the bootstrapping
 4. finish the final paper.
 
+Also UPDOG LIGMA
