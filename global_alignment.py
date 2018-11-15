@@ -75,8 +75,8 @@ def align(s1, s2):
         seq1_align += s2[j - 1]
         j -= 1
 
-    print(scores)
-    return seq1_align[::-1], seq2_align[::-1])
+    #print(scores)
+    return [seq1_align[::-1], seq2_align[::-1]]
 
 
 def main():
