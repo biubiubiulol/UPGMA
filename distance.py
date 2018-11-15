@@ -3,20 +3,17 @@ Finds distance using Kimura's 2-Parameter metric
 (Kimura, 1980)
 '''
 import math
-
+import readfasta as r
+import global_alignment as ga
 #TODO: Alignment of the 2 sequences
 
-def align(seq1, seq2):
-    #get rid of this once done
-    print("This is placeholder for a function implementing dynamic programming")
-    #once this is made actually return the proper output values
-    return seq1, seq2
+
 
 
 def k2p(sequence_1, sequence_2):
-    seq_list =  align(sequence_1, sequence_2)
-    seq1 = seq_list[1]
-    seq2 = seq_list[2]
+    seq_list =  ga.align(sequence_1, sequence_2)
+    seq1 = seq_list[0]
+    seq2 = seq_list[1]
     alpha = 0.9
     beta = 0.1
     if len(seq1) >= len(seq2):
@@ -45,5 +42,12 @@ def k2p(sequence_1, sequence_2):
                     number_transversions = number_transversions+1
     s = number_transitions/length
     v = number_transversions/length
-    d = -(.5)*math.log(1- 2*s - v) - (0.25)*math.log(1- 2*v) 
+    print(s,v)
+    d = -(.5)*math.log(1- 2*s - v) - (0.25)*math.log(1- 2*v)
+    print(d)
     return d
+
+if __name__ == '__main__':
+    sq1 = r.readfasta("mt_homo_dna.fasta.txt")[0][1]
+    sq2 = r.readfasta("mt_homo_dna.fasta.txt")[1][1]
+    k2p(sq1,sq2)
