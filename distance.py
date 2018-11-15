@@ -3,6 +3,7 @@ Finds distance using Kimura's 2-Parameter metric
 (Kimura, 1980)
 '''
 import math
+import global_alignment as ga
 
 #TODO: Alignment of the 2 sequences
 
@@ -14,7 +15,7 @@ def align(seq1, seq2):
 
 
 def k2p(sequence_1, sequence_2):
-    seq_list =  align(sequence_1, sequence_2)
+    seq_list =  ga.align(sequence_1, sequence_2)
     seq1 = seq_list[1]
     seq2 = seq_list[2]
     alpha = 0.9

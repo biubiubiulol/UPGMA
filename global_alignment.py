@@ -7,9 +7,7 @@ Shaban Agayev
 A program that does a global alignment on two sequences.
 '''
 
-def align():
-    s1 = 'CAGC'
-    s2 = 'ACAGTA'
+def align(s1, s2):
 
     s1_length = len(s1)
     s2_length = len(s2)
