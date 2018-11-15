@@ -5,7 +5,7 @@ This program should take the distance table of k2p with different sequences.
 import sys
 import distance as d
 import readfasta
-
+from newick import list_to_newick
 
 def main():
     #sequences = readfasta.readfasta("filename")
@@ -86,6 +86,7 @@ def find_smallest(table):
         # remake both new sequence and new table
         table = remake_sequence(table, result)
     print(newick_format)
+    print(list_to_newick(newick_format))
 
 
 def remake_sequence(table, result):
