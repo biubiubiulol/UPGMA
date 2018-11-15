@@ -48,6 +48,6 @@ def k2p(sequence_1, sequence_2):
     return d
 
 if __name__ == '__main__':
-    sq1 = r.readfasta("mt_homo_dna.fasta.txt")[0][1]
-    sq2 = r.readfasta("mt_homo_dna.fasta.txt")[1][1]
+    sq1 = r.readfasta("sample.fasta.txt")[0][1]
+    sq2 = r.readfasta("sample.fasta.txt")[1][1]
     k2p(sq1,sq2)
