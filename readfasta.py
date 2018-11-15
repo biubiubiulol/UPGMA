@@ -63,3 +63,6 @@ def readfasta(filename):
     # we're done, so clean up, terminate the last sequence, and return
     resultList.append([label, sequence])
     return resultList
+
+if __name__ == '__main__':
+    print(readfasta("sample.fasta.txt")[1][1])
