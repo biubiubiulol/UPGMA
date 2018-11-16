@@ -6,13 +6,16 @@ Finds distance using Kimura's 2-Parameter metric
 import math
 import readfasta as r
 import global_alignment as ga
+import multiprocessing as mp
 #TODO: Alignment of the 2 sequences
 
 
 
 
 def k2p(sequence_1, sequence_2):
-    seq_list =  ga.align(sequence_1, sequence_2)
+    if sequence_1 == sequence_2:
+        return 0
+    seq_list = ga.align(sequence_1, sequence_2)
     seq1 = seq_list[0]
     seq2 = seq_list[1]
     print(seq1 + '\n' + seq2)
@@ -50,16 +53,31 @@ def k2p(sequence_1, sequence_2):
     return d
 
 
+def k2p_multiprocess(seq1, seq2):
+     return [seq1[0], seq2[0], k2p(seq1[1], seq2[1])]
+
+
 def get_k2p_table(sequence_list):
     size = len(sequence_list)
     table = dict()
+    processes = mp.Pool(processes=4)
+    process_pool = []
     for seq in sequence_list:
         table[seq[0]] = dict()
     for i in range(size):
         seq1 = sequence_list[i]
         for j in range(i, size):
             seq2 = sequence_list[j]
-            table[seq1[0]][seq2[0]] = k2p(seq1[1], seq2[1])
+            proc = processes.apply_async(k2p_multiprocess, (seq1, seq2,))
+            process_pool.append(proc)
+    for p in process_pool:
+        result = p.get()
+        s1name = result[0]
+        s2name = result[1]
+        distance = result[2]
+        table[s1name][s2name] = distance
+
+
     return table
 
 

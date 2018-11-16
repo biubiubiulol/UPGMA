@@ -9,7 +9,7 @@ from newick import list_to_newick
 
 def main():
     # sequences = readfasta.readfasta(sys.arv[1])
-    sequences = readfasta.readfasta("shortsample.fasta")
+    sequences = readfasta.readfasta("mt_homo_dna.fasta")
     # sequences = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
     table = d.get_k2p_table(sequences)
     """
