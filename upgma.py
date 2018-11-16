@@ -7,9 +7,10 @@ import distance as d
 import readfasta
 from newick import list_to_newick
 
-def main(sys.argv[1]):
-    #sequences = readfasta.readfasta("filename")
-    sequences = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+def main():
+    # sequences = readfasta.readfasta(sys.arv[1])
+    sequences = readfasta.readfasta("shortsample.fasta")
+    # sequences = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
     table = d.get_k2p_table(sequences)
     """
     table = {}
@@ -79,12 +80,13 @@ def find_smallest(table):
     while len(table) > 2:
         minimum = sys.maxsize
         result = []
-        for row in table:
-            for col in table[row]:
-                if table[row][col] < minimum and table[row][col] != 0 and table[row][col] != -1:
+        for row in table.keys():
+            for col in row:
+                if table[row][col] < minimum and table[row][col] != 0:
                     result = [row, col]
                     minimum = table[row][col]
         print(minimum)
+        # TODO add this as the root of the tree
         newick_format.append(result)
         # remake both new sequence and new table
         table = remake_sequence(table, result)
