@@ -10,6 +10,8 @@ from newick import list_to_newick
 def main():
     #sequences = readfasta.readfasta("filename")
     sequences = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+    table = d.get_k2p_table(sequences)
+    """
     table = {}
     for sequence in sequences:
         row = {}
@@ -65,6 +67,7 @@ def main():
     table['G']['E'] = 13
     table['G']['F'] = 14
     table['G']['G'] = 0
+    """
     global help_table
     help_table = table
 
@@ -126,10 +129,13 @@ def remake_table(table, new_sequences, result):
 
 def find_distance(table, result, row):
     result_string = ''.join(result)
+    # result_string = result
+
     distance = 0
     for char in result_string:
         for row_char in row:
             distance += help_table[row_char][char]
+
     # distance = (table[row][result[0]] + table[row][result[1]]) / 2
     return distance / (len(result_string) * len(row))
 

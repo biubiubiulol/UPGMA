@@ -16,6 +16,7 @@ def list_to_newick(base_list):
 
     return newick
 
+
 if __name__ == "__main__":
     sample_list = ['B', ['A', 'C'], 'D', ['G', ['H', 'J'], 'I']]
     print(list_to_newick(sample_list))

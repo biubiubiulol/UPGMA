@@ -49,6 +49,20 @@ def k2p(sequence_1, sequence_2):
     print(d)
     return d
 
+
+def get_k2p_table(sequence_list):
+    size = len(sequence_list)
+    table = dict()
+    for seq in sequence_list:
+        table[seq] = dict()
+    for i in range(size):
+        seq1 = sequence_list[i]
+        for j in range(i, size):
+            seq2 = sequence_list[j]
+            table[seq1][seq2] = k2p(seq1, seq2)
+
+
+
 if __name__ == '__main__':
     sq1 = r.readfasta("sample.fasta.txt")[0][1]
     sq2 = r.readfasta("sample.fasta.txt")[1][1]
