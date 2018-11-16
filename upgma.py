@@ -7,7 +7,7 @@ import distance as d
 import readfasta
 from newick import list_to_newick
 
-def main():
+def main(sys.argv[1]):
     #sequences = readfasta.readfasta("filename")
     sequences = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
     table = {}
