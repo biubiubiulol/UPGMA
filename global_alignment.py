@@ -32,10 +32,11 @@ def align(s1, s2):
         scores_i = scores[i]
         scores_minus = scores[i-1]
         for j in range(1, s2_length+1):
+            scores_minus_j_ = scores_minus[j - 1]
             if s1i == s2[j-1]:
-                val1 = scores_minus[j-1] + match_bonus
+                val1 = scores_minus_j_ + match_bonus
             else:
-                val1 = scores_minus[j-1] + mismatch_penalty
+                val1 = scores_minus_j_ + mismatch_penalty
 
             val2 = scores_minus[j] + gap_penalty
             val3 = scores_i[j-1] + gap_penalty
