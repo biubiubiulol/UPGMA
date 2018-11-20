@@ -65,7 +65,8 @@ def readfasta(filename):
     return resultList
 
 if __name__ == '__main__':
-    result_list = readfasta("mt_homo_dna.fasta.txt")
+    result_list = readfasta("mt_homo_dna.fasta")
     for i in range(len(result_list)):
         print(len(result_list[i][1]))
+        print(result_list[i][0])
 
