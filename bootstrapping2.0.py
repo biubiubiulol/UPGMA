@@ -4,12 +4,12 @@ Executes bootstrapping on sequences
 Last modified: 19 November 2018
 '''
 
-from read_fasta import read_fasta
+from readfasta import readfasta
 import random
 
 
 def bootstrap():
-    sequences = read_fasta("mt_homo_dna.fasta")
+    sequences = readfasta("mt_homo_dna.fasta")
 
     list_original_sequences = []
     for sequence in range(0, len(sequences)):  #convert (list of lists) to (list of strings), makes logic easier later
