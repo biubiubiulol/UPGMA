@@ -16,7 +16,7 @@ def align(s1, s2):
     mismatch_penalty = -4
     match_bonus = 5
 
-    scores = np.zeros(shape=(s1_length+1, s2_length+1), dtype=np.int64)
+    scores = np.zeros(shape=(s1_length+1, s2_length+1), dtype=np.int32)
     # scores = [0 for i in range(s2_length + 1)] for j in range(s1_length + 1)]
 
     for i in range(1, s1_length+1):
