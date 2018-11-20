@@ -16,8 +16,9 @@ def align(s1, s2):
     mismatch_penalty = -4
     match_bonus = 5
 
-    scores = np.zeros(shape=(s1_length+1, s2_length+1), dtype=np.int32)
-    # scores = [0 for i in range(s2_length + 1)] for j in range(s1_length + 1)]
+    #scores = np.zeros(shape=(s1_length + 1, s2_length + 1), dtype=np.int32)
+    #instead of using a np array
+    scores = [[0 for i in range(s2_length + 1)] for j in range(s1_length + 1)]
 
     for i in range(1, s1_length+1):
         scores[i][0] = gap_penalty * i
@@ -25,20 +26,21 @@ def align(s1, s2):
     for j in range(1, s2_length+1):
         scores[0][j] = gap_penalty * j
 
+#matrix filling loop
     for i in range(1, s1_length+1):
+        s1i = s1[i-1]
+        scores_i = scores[i]
+        scores_minus = scores[i-1]
         for j in range(1, s2_length+1):
-            val1 = 0
-            val2 = 0
-            val3 = 0
-            if s1[i-1] == s2[j-1]:
-                val1 = scores[i-1][j-1] + match_bonus
+            if s1i == s2[j-1]:
+                val1 = scores_minus[j-1] + match_bonus
             else:
-                val1 = scores[i-1][j-1] + mismatch_penalty
+                val1 = scores_minus[j-1] + mismatch_penalty
 
-            val2 = scores[i-1][j] + gap_penalty
-            val3 = scores[i][j-1] + gap_penalty
+            val2 = scores_minus[j] + gap_penalty
+            val3 = scores_i[j-1] + gap_penalty
 
-            scores[i][j] = max(val1, val2, val3)
+            scores_i[j] = max(val1, val2, val3)
 
     seq1_align = ''
     seq2_align = ''
