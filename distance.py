@@ -60,7 +60,7 @@ def k2p_multiprocess(seq1, seq2):
 def get_k2p_table(sequence_list):
     size = len(sequence_list)
     table = dict()
-    processes = mp.Pool(processes=1)
+    processes = mp.Pool(processes=4)
     process_pool = []
     for seq in sequence_list:
         table[seq[0]] = dict()
