@@ -76,6 +76,7 @@ def get_k2p_table(sequence_list):
         s2name = result[1]
         distance = result[2]
         table[s1name][s2name] = distance
+        table[s2name][s1name] = distance
 
 
     return table

@@ -124,9 +124,12 @@ def remake_table(table, result):
     # TODO is the find_avg_distance function being used correctly?
     for key in table[combined_sequence].keys():
         if table[combined_sequence][key] != 0:
-            table[combined_sequence][key] = find_avg_distance(table, result, seq1)
+            avg_dist = find_avg_distance(table, result, seq1)
+            table[combined_sequence][key] = avg_dist
+            table[key][combined_sequence] = avg_dist
 
     # Do same for columns
+    """
     for row in table.keys():
         if seq1 in table[row]:
             table[row][combined_sequence] = table[row][seq1]
@@ -135,7 +138,7 @@ def remake_table(table, result):
                     #set new distance
                     if table[row][combined_sequence] != 0:
                         table[row][combined_sequence] = find_avg_distance(table, result, seq2)
-
+    """
     #finally delete old ones
     del table[seq1]
     del table[seq2]
@@ -181,7 +184,7 @@ def find_avg_distance(table, result, row):
     #         distance += help_table[row_char][char]
 
     distance = (table[row][result[0]] + table[row][result[1]]) / 2
-    return distance / (len(result_string) * len(row))
+    return distance
 
 
 if __name__ == '__main__':
