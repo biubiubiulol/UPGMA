@@ -1,5 +1,3 @@
-from sys import argv
-from readfasta import readfasta
 import numpy as np
 
 '''
@@ -17,8 +15,6 @@ def align(s1, s2):
     match_bonus = np.int32(5)
 
     scores = np.zeros(shape=(s1_length + 1, s2_length + 1), dtype=np.int32)
-    #instead of using a np array
-    #scores = [[0 for i in range(s2_length + 1)] for j in range(s1_length + 1)]
 
     for i in range(1, s1_length+1):
         scores[i][0] = gap_penalty * i
@@ -26,7 +22,7 @@ def align(s1, s2):
     for j in range(1, s2_length+1):
         scores[0][j] = gap_penalty * j
 
-#matrix filling loop
+    # matrix filling loop
     for i in range(1, s1_length+1):
         s1i = s1[i-1]
         scores_i = scores[i]
@@ -79,13 +75,4 @@ def align(s1, s2):
         seq1_align += "-"
         j -= 1
 
-    # print(scores)
     return [seq1_align[::-1], seq2_align[::-1]]
-
-
-def main():
-    align()
-
-
-if __name__ == '__main__':
-    main()
