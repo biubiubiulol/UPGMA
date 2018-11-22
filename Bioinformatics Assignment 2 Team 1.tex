@@ -48,11 +48,13 @@ Due to runtime concerns as well as memory concerns, an abridged version of the M
 We used four steps during the implementation. The first step was global sequence alignment, which finds the best alignment of every two DNA pairs. Then we calculated the K2P distance among those DNA pairs and generated a distance matrix as the input of UPGMA. The third step was the UPGMA process, which found the minimum distance in the matrix and combined them together to get the new matrix until we got the final result. The output was a Newick tree format among those sequences. The final step was bootstrapping, which we randomly chose the bases from original DNA sequences and generate new input and go through all the steps again.
 
 \subsubsection{global alignment}
+Our program uses the Needleman-Wunsh algorithm (global alignment), which is an implementation of dynamic programming, in order to find similarities and relationships between our different sequences. Global alignment is an appropriate technique for this application due to the obvious similarities between the sequences. The are very similarly structured, in both length and appearing bases. Our implementation compares two sequences to eachother at a time, and is repeated until we are given all optimal alignments between the sequences
 
 
 
 \subsubsection{calculating K2P distance}
 Our program calculates the K2P distances between each sequence in parallel. For each pair of sequences, global alignment was applied before counting the transitions and transversions in the aligned sequences. The final distance was calculated by $D_{K2P}=\frac{-1}{2} \ln(1 - 2 * S - V) - \frac{1}{4} \ln(1 - 2 * V)$, where $S$ is the ratio between the numbers of transitions and the length of the aligned sequence, and $V$ is the ratio between the numbers of transversions and the length of the aligned sequence.
+
 \subsubsection{UPGMA}
 
 
